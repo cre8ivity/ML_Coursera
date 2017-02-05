@@ -88,7 +88,7 @@ Delta2 = zeros(num_labels,hidden_layer_size+1);
 
 for index = 1 : m
   delta3 = a3(index,:)-y_vectorized(index,:); % this delta is row-wise
-  delta3 = delta3';
+  delta3 = delta3'; % from here all deltas are columnwise
   delta2 = (Theta2'*delta3)(2:end).*sigmoidGradient(z2(index,:)'); 
   Delta1 = Delta1 + delta2*X1(index,:);
   Delta2 = Delta2 + delta3*[1 ,a2(index,:)];
